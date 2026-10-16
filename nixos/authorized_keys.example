@@ -1,0 +1,10 @@
+# Copy to `authorized_keys` (same directory, gitignored) with one SSH public
+# key per line. These keys can SSH into every worker ISO as user `worker`
+# (password auth is disabled) and are what `qemu-fleet.sh collect` uses.
+#
+#   cp nixos/authorized_keys.example nixos/authorized_keys
+#   cat ~/.ssh/id_ed25519.pub >> nixos/authorized_keys
+#   # test rigs: cat .qemu-images/grid-key.pub >> nixos/authorized_keys
+#
+# Lines starting with # and blank lines are ignored.
+#ssh-ed25519 AAAA... you@example

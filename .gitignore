@@ -1,0 +1,12 @@
+.direnv/
+result
+result-*
+.venv/
+__pycache__/
+*.pyc
+heartbeats/
+models/
+*.gguf
+.qemu-images/
+nixos/authorized_keys
+*.iso

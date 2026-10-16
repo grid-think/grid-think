@@ -1,0 +1,80 @@
+[
+  {
+    "node_id": "coord-t480-16gb",
+    "ip": "10.42.0.1",
+    "rpc_port": 50052,
+    "free_mem_mib": 11000,
+    "total_mem_mib": 16000,
+    "cpu_cores": 8,
+    "cpu_flags": ["avx2", "fma"],
+    "backend": "vulkan",
+    "llama_rev": "flake.lock",
+    "wired": true,
+    "role": "coordinator"
+  },
+  {
+    "node_id": "node-t480-16gb",
+    "ip": "10.42.0.11",
+    "rpc_port": 50052,
+    "free_mem_mib": 10500,
+    "total_mem_mib": 16000,
+    "cpu_cores": 8,
+    "cpu_flags": ["avx2", "fma"],
+    "backend": "vulkan",
+    "llama_rev": "flake.lock",
+    "wired": true,
+    "role": "worker"
+  },
+  {
+    "node_id": "node-latitude-16gb",
+    "ip": "10.42.0.12",
+    "rpc_port": 50052,
+    "free_mem_mib": 10200,
+    "total_mem_mib": 16000,
+    "cpu_cores": 8,
+    "cpu_flags": ["avx2"],
+    "backend": "vulkan",
+    "llama_rev": "flake.lock",
+    "wired": true,
+    "role": "worker"
+  },
+  {
+    "node_id": "node-thinkpad-16gb",
+    "ip": "10.42.0.13",
+    "rpc_port": 50052,
+    "free_mem_mib": 9800,
+    "total_mem_mib": 16000,
+    "cpu_cores": 8,
+    "cpu_flags": ["avx2", "fma"],
+    "backend": "cpu",
+    "llama_rev": "flake.lock",
+    "wired": true,
+    "role": "worker"
+  },
+  {
+    "node_id": "node-elitebook-8gb",
+    "ip": "10.42.0.14",
+    "rpc_port": 50052,
+    "free_mem_mib": 6000,
+    "total_mem_mib": 8000,
+    "cpu_cores": 4,
+    "cpu_flags": ["avx2"],
+    "backend": "cpu",
+    "llama_rev": "flake.lock",
+    "wired": true,
+    "role": "worker"
+  },
+  {
+    "node_id": "node-old-8gb",
+    "ip": "10.42.0.15",
+    "rpc_port": 50052,
+    "free_mem_mib": 5800,
+    "total_mem_mib": 8000,
+    "cpu_cores": 4,
+    "cpu_flags": ["avx2"],
+    "backend": "cpu",
+    "llama_rev": "flake.lock",
+    "wired": true,
+    "role": "worker"
+  }
+]

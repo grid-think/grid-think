@@ -1,0 +1,54 @@
+# Native ISO build per arch. Cross-compiling a full NixOS system is not
+# supported, so x86_64 builds on ubuntu-24.04 and aarch64 on ubuntu-24.04-arm.
+name: worker-iso
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            system: x86_64-linux
+          - runner: ubuntu-24.04-arm
+            system: aarch64-linux
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android "$AGENT_TOOLSDIRECTORY" || true
+          sudo apt-get clean || true
+          df -h /
+
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Full gate
+        run: nix flake check --print-build-logs
+
+      - name: Materialize ISO for upload
+        run: nix build .#worker-iso -o worker-iso
+
+      - name: Show ISO
+        run: ls -lh worker-iso/iso/
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: worker-iso-${{ matrix.system }}
+          path: worker-iso/iso/*.iso
+          retention-days: 3
+          compression-level: 0

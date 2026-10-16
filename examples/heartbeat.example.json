@@ -1,0 +1,14 @@
+{
+  "node_id": "node-latitude-5400",
+  "ip": "10.42.0.11",
+  "rpc_port": 50052,
+  "free_mem_mib": 10000,
+  "total_mem_mib": 16000,
+  "cpu_cores": 8,
+  "cpu_flags": ["avx2", "fma"],
+  "backend": "vulkan",
+  "llama_rev": "flake.lock",
+  "wired": true,
+  "role": "worker",
+  "version": 1
+}
